@@ -19,8 +19,8 @@
           "name":"Diskspace",
           "type":"diskspace",
           "path":"/",
-          "warning": "2G",
-          "error": "500M"
+          "warning": "2GB",
+          "error": "500MB"
         }
       ]
     },

@@ -6,9 +6,18 @@ const l = new Log(config.log)
 
 const os = require('os')
 const fs = require('fs')
+const diskusage = require('diskusage')
+const bytes = require('bytes')
 
 // TODO: require for every check the needed lib from lib/
-const checkLoad = require('./lib/load.js') // TODO: test
+const checkLoad = require('./lib/load.js')
+const checkDiskspace = require('./lib/diskspace.js')
+// TODO: ping
+// TODO: process
+// TODO: file (subtypes)
+// TODO: xml
+// TODO: http
+// TODO: log (subtypes)
 
 let status = JSON.parse(JSON.stringify(config))
 delete status.statusFile
@@ -23,6 +32,7 @@ for (let index = 0; index < config.checkSuites.length; index++) {
     let result = {}
     switch (check.type) {
       case 'load': result = checkLoad(check, os); break
+      case 'diskspace': result = checkDiskspace(check, diskusage, bytes); break
       // TODO: all checks
       default: continue
     }

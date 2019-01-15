@@ -1,4 +1,4 @@
-/* global it, describe, beforeEach, afterEach */
+/* global it, describe */
 
 const loadCheck = require('../lib/load.js')
 const assert = require('assert')
@@ -9,7 +9,7 @@ let os = {
 }
 
 describe('Testing Check "load"', function () {
-  it('should throw an error if the type is not load', function() {
+  it('should throw an error if the type is not load', function () {
     try {
       loadCheck({
         name: 'test',
