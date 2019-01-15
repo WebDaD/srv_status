@@ -1,4 +1,10 @@
 {
+  "statusFile":"/some/status.json",
+  "log":{
+    "name": "CHECK",
+    "file": "/var/log/mylog.log",
+    "logLevel": "WARN"
+  },
   "checkSuites": [
     {
       "name":"Basic Server Check",
