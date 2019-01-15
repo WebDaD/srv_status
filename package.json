@@ -4,8 +4,12 @@
   "description": "Simple Self-Containable Status-Messager. Creates a JSON-File",
   "main": "index.js",
   "scripts": {
+    "build": "nexe -i check.js -t linux-x64 -o bin/check --build && nexe -i server.js -t linux-x64 -o bin/server --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dominik Sigmund",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nexe": "^2.0.0-rc.34"
+  }
 }

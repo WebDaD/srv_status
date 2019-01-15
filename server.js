@@ -1,0 +1,1 @@
+// run simple server on port to server result.json from check and check.log and check.error.log

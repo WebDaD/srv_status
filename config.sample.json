@@ -1,0 +1,60 @@
+{
+  "checkSuites": [
+    {
+      "name":"Basic Server Check",
+      "checks": [
+        {
+          "name":"Load",
+          "type":"load",
+          "warning": 0.8,
+          "error": 1.0
+        },
+        {
+          "name":"Diskspace",
+          "type":"diskspace",
+          "path":"/",
+          "warning": "2G",
+          "error": "500M"
+        }
+      ]
+    },
+    {
+      "name":"Online",
+      "checks": [
+        {
+          "name":"nginx Running",
+          "type":"process",
+          "item":"nginx"
+        },
+        {
+          "name":"Incoming Map-XML Timestamp < 15 minutes",
+          "type":"file",
+          "item":"/some/folder/file.xml",
+          "value":"timestamp",
+          "warning": "7min",
+          "error": "15min"
+        },
+        {
+          "name":"Incoming Map-XML is well-formed",
+          "type":"xml",
+          "item":"/some/folder/file.xml"
+        },
+        {
+          "name":"Map-XML is accessible via http",
+          "type":"http",
+          "item":"http://server/file.xml"
+        },
+        {
+          "name":"Map-XML is collected by 192.168.3.12 via HTTP",
+          "type":"log",
+          "item":"/var/logs/nginx/access.log",
+          "check":"last",
+          "regex":"^(.+)\\s/file.xml accessed by 192.168.3.12$",
+          "value":"timestamp",
+          "warning": "7min",
+          "error": "15min"
+        }
+      ]
+    }
+  ]
+}

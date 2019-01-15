@@ -1,0 +1,1 @@
+// Use Commander, load config, check workflows, write to result.json and logs
