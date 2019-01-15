@@ -5,11 +5,26 @@
   "main": "index.js",
   "scripts": {
     "build": "nexe -i check.js -t linux-x64 -o bin/check --build && nexe -i server.js -t linux-x64 -o bin/server --build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/*.js",
+    "test-coverage": "nyc --reporter=html --reporter=text mocha -- tests/*.js",
+    "test-graphics": "nyc --reporter=html --reporter=text mocha -R mochawesome -- tests/*.js",
+    "test-mutation": "stryker run"
   },
   "author": "Dominik Sigmund",
   "license": "ISC",
   "devDependencies": {
-    "nexe": "^2.0.0-rc.34"
+    "mocha": "^5.2.0",
+    "mochawesome": "^3.1.1",
+    "nexe": "^2.0.0-rc.34",
+    "nyc": "^13.1.0",
+    "stryker": "^0.34.0",
+    "stryker-api": "^0.23.0",
+    "stryker-html-reporter": "^0.17.0",
+    "stryker-javascript-mutator": "^0.13.0",
+    "stryker-mocha-framework": "^0.14.0",
+    "stryker-mocha-runner": "^0.16.0"
+  },
+  "dependencies": {
+    "log": "file:../log"
   }
 }
