@@ -5,6 +5,10 @@ let fs = require('fs')
 let server = http.createServer(function (req, res) {
   if (req.method === 'GET') {
     fs.readFile(file, 'utf8', function (error, data) {
+      res.setHeader('Access-Control-Allow-Origin', '*')
+      res.setHeader('Access-Control-Request-Method', '*')
+      res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET')
+      res.setHeader('Access-Control-Allow-Headers', '*')
       if (error) {
         console.error(error)
         res.writeHead(501, {'Content-Type': 'text/json'})

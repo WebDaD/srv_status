@@ -48,7 +48,9 @@
         {
           "name":"Map-XML is accessible via http",
           "type":"http",
-          "item":"http://server/file.xml"
+          "item":"http://server/file.xml",
+          "warning": "2",
+          "critical": "15"
         },
         {
           "name":"Map-XML is collected by 192.168.3.12 via HTTP",

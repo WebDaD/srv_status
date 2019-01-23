@@ -1,22 +1,35 @@
+const fs = require('fs')
+try {
+  if (process.argv && process.argv.length > 2) {
+    fs.accessSync(process.argv[2], fs.constants.R_OK)
+  } else {
+    console.error('Please give a Config!')
+    process.exit(1)
+  }
+} catch (err) {
+  console.error(process.argv[2] + ' does not exist or is not readable')
+  process.exit(2)
+}
 let config = require(process.argv[2])
-// TODO: die if no config
 
-const Log = require('log') // TODO: fix (npm)
+const Log = require('lib-log')
 const l = new Log(config.log)
 
 const os = require('os')
-const fs = require('fs')
 const diskusage = require('diskusage')
 const bytes = require('bytes')
+const { execSync } = require('child_process')
+const libxmljs = require('libxmljs')
+const syncRequest = require('sync-request')
 
 const checkLoad = require('./lib/load.js')
 const checkDiskspace = require('./lib/diskspace.js')
-// TODO: ping
-// TODO: process
-// TODO: file (subtypes)
-// TODO: xml
-// TODO: http
-// TODO: log (subtypes)
+const checkPing = require('./lib/ping.js')
+const checkProcess = require('./lib/process.js')
+const checkXML = require('./lib/xml.js')
+const checkHTTP = require('./lib/http.js')
+// TODO: file (subtypes into own plugins!)
+// TODO: log (subtypes into own plugins!)
 
 let status = JSON.parse(JSON.stringify(config))
 delete status.statusFile
@@ -32,6 +45,10 @@ for (let index = 0; index < config.checkSuites.length; index++) {
     switch (check.type) {
       case 'load': result = checkLoad(check, os); break
       case 'diskspace': result = checkDiskspace(check, diskusage, bytes); break
+      case 'ping': result = checkPing(check, execSync); break
+      case 'process': result = checkProcess(check, execSync); break
+      case 'xml': result = checkXML(check, libxmljs, fs); break
+      case 'http': result = checkHTTP(check, syncRequest); break
       // TODO: all checks
       default: continue
     }

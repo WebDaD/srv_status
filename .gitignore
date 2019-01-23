@@ -5,4 +5,4 @@ mochawesome-report/
 .stryker-tmp/
 reports/
 config.json
-bin/
+test.js
