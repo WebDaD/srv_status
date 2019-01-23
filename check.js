@@ -9,7 +9,6 @@ const fs = require('fs')
 const diskusage = require('diskusage')
 const bytes = require('bytes')
 
-// TODO: require for every check the needed lib from lib/
 const checkLoad = require('./lib/load.js')
 const checkDiskspace = require('./lib/diskspace.js')
 // TODO: ping
