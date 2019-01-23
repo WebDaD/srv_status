@@ -21,6 +21,7 @@ const bytes = require('bytes')
 const { execSync } = require('child_process')
 const libxmljs = require('libxmljs')
 const syncRequest = require('sync-request')
+const moment = require('moment')
 
 const checkLoad = require('./lib/load.js')
 const checkDiskspace = require('./lib/diskspace.js')
@@ -28,8 +29,8 @@ const checkPing = require('./lib/ping.js')
 const checkProcess = require('./lib/process.js')
 const checkXML = require('./lib/xml.js')
 const checkHTTP = require('./lib/http.js')
-const checkFileAge = require('./lib/fileage.js') // TODO: fileage
-// TODO: log (subtypes into own plugins!)
+const checkFileAge = require('./lib/fileage.js')
+const checkLogTime = require('./lib/logtime.js')
 
 let status = JSON.parse(JSON.stringify(config))
 delete status.statusFile
@@ -50,6 +51,7 @@ for (let index = 0; index < config.checkSuites.length; index++) {
       case 'xml': result = checkXML(check, libxmljs, fs); break
       case 'http': result = checkHTTP(check, syncRequest); break
       case 'fileage': result = checkFileAge(check, fs); break
+      case 'logtime': result = checkLogTime(check, fs, moment); break
       default: l.error('CHECK "' + check.name + '" of Suite "' + suite.name + '" Type is not valid: ' + check.type); continue
     }
     status.checkSuites[index].checks[subindex].status = result.status

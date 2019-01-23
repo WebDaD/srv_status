@@ -53,13 +53,12 @@
         },
         {
           "name":"Map-XML is collected by 192.168.3.12 via HTTP",
-          "type":"log",
-          "item":"/var/logs/nginx/access.log",
-          "check":"last",
+          "type":"logtime",
+          "target":"/var/logs/nginx/access.log",
           "regex":"^(.+)\\s/file.xml accessed by 192.168.3.12$",
-          "value":"timestamp",
-          "warning": "7min",
-          "error": "15min"
+          "format":"DD/MMM/YYYY:HH:mm:ss ZZ",
+          "warning": "420",
+          "critical": "900"
         }
       ]
     }
