@@ -28,7 +28,7 @@ const checkPing = require('./lib/ping.js')
 const checkProcess = require('./lib/process.js')
 const checkXML = require('./lib/xml.js')
 const checkHTTP = require('./lib/http.js')
-// TODO: file (subtypes into own plugins!)
+const checkFileAge = require('./lib/fileage.js') // TODO: fileage
 // TODO: log (subtypes into own plugins!)
 
 let status = JSON.parse(JSON.stringify(config))
@@ -49,8 +49,8 @@ for (let index = 0; index < config.checkSuites.length; index++) {
       case 'process': result = checkProcess(check, execSync); break
       case 'xml': result = checkXML(check, libxmljs, fs); break
       case 'http': result = checkHTTP(check, syncRequest); break
-      // TODO: all checks
-      default: continue
+      case 'fileage': result = checkFileAge(check, fs); break
+      default: l.error('CHECK "' + check.name + '" of Suite "' + suite.name + '" Type is not valid: ' + check.type); continue
     }
     status.checkSuites[index].checks[subindex].status = result.status
     status.checkSuites[index].checks[subindex].result = result.value

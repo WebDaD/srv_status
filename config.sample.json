@@ -34,11 +34,10 @@
         },
         {
           "name":"Incoming Map-XML Timestamp < 15 minutes",
-          "type":"file",
-          "item":"/some/folder/file.xml",
-          "value":"timestamp",
-          "warning": "7min",
-          "error": "15min"
+          "type":"fileage",
+          "target":"/some/folder/file.xml",
+          "warning": "420",
+          "critical": "900"
         },
         {
           "name":"Incoming Map-XML is well-formed",
