@@ -12,15 +12,31 @@
         {
           "name":"Load",
           "type":"load",
-          "warning": 0.8,
-          "error": 1.0
+          "warning": {
+            "value": 0.8,
+            "recommendations": [
+              "use htop to check intensive Load"
+            ],
+            "actions": [
+              "mail -s \"Load WARNING on HOST\" user@example.com < /dev/null"
+            ]
+          },
+          "critical": {
+            "value": 1.0,
+            "recommendations": [
+              "use htop to check intensive Load"
+            ],
+            "actions": [
+              "mail -s \"Load CRITICAL on HOST\" user@example.com < /dev/null"
+            ]
+          },
         },
         {
           "name":"Diskspace",
           "type":"diskspace",
-          "path":"/",
+          "target":"/",
           "warning": "2GB",
-          "error": "500MB"
+          "critical": "500MB"
         }
       ]
     },
@@ -30,15 +46,17 @@
         {
           "name":"nginx Running",
           "type":"process",
-          "item":"nginx",
-          "recommendations": [
-            "Restart nginx",
-            "Check service nginx status",
-            "Check nginx LogFile"
-          ],
-          "actions": [
-            "service nginx start"
-          ]
+          "target":"nginx",
+          "critical": {
+            "recommendations": [
+              "Restart nginx",
+              "Check service nginx status",
+              "Check nginx LogFile"
+            ],
+            "actions": [
+              "service nginx start"
+            ]
+          }
         },
         {
           "name":"Incoming Map-XML Timestamp < 15 minutes",
@@ -50,12 +68,12 @@
         {
           "name":"Incoming Map-XML is well-formed",
           "type":"xml",
-          "item":"/some/folder/file.xml"
+          "target":"/some/folder/file.xml"
         },
         {
           "name":"Map-XML is accessible via http",
           "type":"http",
-          "item":"http://server/file.xml",
+          "target":"http://server/file.xml",
           "warning": "2",
           "critical": "15"
         },

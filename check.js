@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 try {
   if (process.argv && process.argv.length > 2) {
     fs.accessSync(process.argv[2], fs.constants.R_OK)
@@ -14,6 +15,22 @@ let config = require(process.argv[2])
 
 const Log = require('lib-log')
 const l = new Log(config.log)
+
+config.statusFile = path.resolve(config.statusFile)
+if (!fs.lstatSync(config.statusFile).isFile()) {
+  l.error(config.statusFile + ' is not a File...')
+  process.exit(3)
+}
+try {
+  fs.accessSync(config.statusFile, this.fs.constants.R_OK | this.fs.constants.W_OK)
+} catch (err) {
+  try {
+    fs.writeFileSync(config.statusFile, '')
+  } catch (err) {
+    l.error('Could not Create File ' + this.options.file + '\n' + err.toString())
+    process.exit(4)
+  }
+}
 
 let checks = {}
 let checkFiles = fs.readdirSync('./checks/')

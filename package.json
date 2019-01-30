@@ -4,7 +4,7 @@
   "description": "Simple Self-Containable Status-Messager. Creates a JSON-File",
   "main": "index.js",
   "scripts": {
-    "build": "nexe -i check.js -t linux-x64 -o bin/check --build && nexe -i server.js -t linux-x64 -o bin/server --build",
+    "build": "nexe -i check.js -t linux-x64 -o bin/check --build && nexe -i server.js -t linux-x64 -o bin/server --build && nexe -i action.js -t linux-x64 -o bin/action --build",
     "test": "mocha tests/*.test.js",
     "test-coverage": "nyc --reporter=html --reporter=text mocha -- tests/*.test.js",
     "test-graphics": "nyc --reporter=html --reporter=text mocha -R mochawesome -- tests/*.test.js",
