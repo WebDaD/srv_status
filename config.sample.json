@@ -30,7 +30,15 @@
         {
           "name":"nginx Running",
           "type":"process",
-          "item":"nginx"
+          "item":"nginx",
+          "recommendations": [
+            "Restart nginx",
+            "Check service nginx status",
+            "Check nginx LogFile"
+          ],
+          "actions": [
+            "service nginx start"
+          ]
         },
         {
           "name":"Incoming Map-XML Timestamp < 15 minutes",

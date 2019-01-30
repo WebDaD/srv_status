@@ -3,6 +3,7 @@ module.exports = function (check, syncRequest) {
     throw new Error('Wrong Type for Check http: ' + check.type)
   } else {
     try {
+      syncRequest = (typeof syncRequest === 'undefined') ? require('sync-request') : syncRequest
       let start = new Date()
       let res = syncRequest('GET', check.target, {
         timeout: check.critical * 1000

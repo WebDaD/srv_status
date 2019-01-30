@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const loadProcess = require('../lib/process.js')
+const loadProcess = require('../checks/process.js')
 const assert = require('assert')
 let execSync = function (cmd) {
   if (cmd === 'ps aux | grep "[r]unning"') {

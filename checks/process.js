@@ -3,6 +3,7 @@ module.exports = function (check, execSync) {
     throw new Error('Wrong Type for Check process: ' + check.type)
   } else {
     try {
+      execSync = (typeof execSync === 'undefined') ?  require('child_process').execSync : execSync
       let cleanedTarget = '[' + check.target[0] + ']' + check.target.substr(1)
       let results = execSync('ps aux | grep "' + cleanedTarget + '"')
       return {

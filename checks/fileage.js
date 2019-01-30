@@ -3,6 +3,7 @@ module.exports = function (check, fs) {
     throw new Error('Wrong Type for Check fileage: ' + check.type)
   } else {
     try {
+      fs = (typeof fs === 'undefined') ? require('fs') : fs
       let status = 'OK'
       const stats = fs.statSync(check.target)
       let now = new Date()

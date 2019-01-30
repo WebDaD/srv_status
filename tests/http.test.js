@@ -1,6 +1,6 @@
 /* global it, describe, before, after */
 
-const checkHTTP = require('../lib/http.js')
+const checkHTTP = require('../checks/http.js')
 const assert = require('assert')
 const syncRequest = require('sync-request')
 const spawn = require('child_process').spawn

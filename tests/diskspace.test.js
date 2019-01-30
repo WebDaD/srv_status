@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const checkDiskspace = require('../lib/diskspace.js')
+const checkDiskspace = require('../checks/diskspace.js')
 const assert = require('assert')
 const bytes = require('bytes')
 let diskusage = {

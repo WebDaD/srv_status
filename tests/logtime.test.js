@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const checkLogTime = require('../lib/logtime.js')
+const checkLogTime = require('../checks/logtime.js')
 const assert = require('assert')
 const moment = require('moment')
 const fs = require('fs')

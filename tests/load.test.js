@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const loadCheck = require('../lib/load.js')
+const loadCheck = require('../checks/load.js')
 const assert = require('assert')
 let os = {
   loadavg: function () {

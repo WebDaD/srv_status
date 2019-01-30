@@ -3,6 +3,8 @@ module.exports = function (check, fs, moment) {
     throw new Error('Wrong Type for Check logtime: ' + check.type)
   } else {
     try {
+      moment = (typeof moment === 'undefined') ? require('moment') : moment
+      fs = (typeof fs === 'undefined') ? require('fs') : fs
       let status = 'OK'
       const contents = fs.readFileSync(check.target, 'utf8')
       var regexp = new RegExp(check.regex, 'gmi')

@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const loadXML = require('../lib/xml.js')
+const loadXML = require('../checks/xml.js')
 const assert = require('assert')
 const fs = require('fs')
 const libxmljs = require('libxmljs')

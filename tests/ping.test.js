@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const loadPing = require('../lib/ping.js')
+const loadPing = require('../checks/ping.js')
 const assert = require('assert')
 let execSync = function (cmd) {
   if (cmd === 'ping -c 1 -W 2 1.1.1.1') {

@@ -3,6 +3,8 @@ module.exports = function (check, libxmljs, fs) {
     throw new Error('Wrong Type for Check xml: ' + check.type)
   } else {
     try {
+      libxmljs = (typeof libxmljs === 'undefined') ? require('libxmljs') : libxmljs
+      fs = (typeof fs === 'undefined') ? require('fs') : fs
       let xml = fs.readFileSync(check.target, 'utf8')
       libxmljs.parseXml(xml)
       return {

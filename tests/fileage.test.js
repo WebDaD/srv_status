@@ -1,6 +1,6 @@
 /* global it, describe */
 
-const checkFileAge = require('../lib/fileage.js')
+const checkFileAge = require('../checks/fileage.js')
 const assert = require('assert')
 let fs = {
   date: new Date(),
