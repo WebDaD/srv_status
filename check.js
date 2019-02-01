@@ -36,7 +36,7 @@ let checks = {}
 let checkFiles = fs.readdirSync('./checks/')
 for (let index = 0; index < checkFiles.length; index++) {
   const checkFile = checkFiles[index]
-  checks[checkFile] = require('./checks/' + checkFile + '.js')
+  checks[checkFile.replace('.js', '')] = require('./checks/' + checkFile)
 }
 
 let status = JSON.parse(JSON.stringify(config))
