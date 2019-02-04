@@ -51,5 +51,5 @@ for (let index = 0; index < config.checkSuites.length; index++) {
     }
   }
 }
-fs.writeFileSync(config.statusFile, JSON.stringify(config))
+fs.writeFileSync(process.argv[2], JSON.stringify(config))
 l.info('Action Done')
