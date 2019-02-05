@@ -6,3 +6,4 @@ mochawesome-report/
 reports/
 config.json
 test.js
+bin/test

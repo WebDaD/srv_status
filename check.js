@@ -33,11 +33,14 @@ try {
 }
 
 let checks = {}
-let checkFiles = fs.readdirSync('./checks/')
-for (let index = 0; index < checkFiles.length; index++) {
-  const checkFile = checkFiles[index]
-  checks[checkFile.replace('.js', '')] = require('./checks/' + checkFile)
-}
+checks.diskspace = require('./checks/diskspace.js')
+checks.fileage = require('./checks/fileage.js')
+checks.http = require('./checks/http.js')
+checks.load = require('./checks/load.js')
+checks.logtime = require('./checks/logtime.js')
+checks.ping = require('./checks/ping.js')
+checks.process = require('./checks/process.js')
+checks.xml = require('./checks/xml.js')
 
 let status = JSON.parse(JSON.stringify(config))
 delete status.statusFile
