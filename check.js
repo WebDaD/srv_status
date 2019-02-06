@@ -36,11 +36,13 @@ let checks = {}
 checks.diskspace = require('./checks/diskspace.js')
 checks.fileage = require('./checks/fileage.js')
 checks.http = require('./checks/http.js')
+checks.port = require('./checks/port.js')
 checks.load = require('./checks/load.js')
 checks.logtime = require('./checks/logtime.js')
 checks.ping = require('./checks/ping.js')
 checks.process = require('./checks/process.js')
 checks.xml = require('./checks/xml.js')
+checks.rabbitmqAlive = require('./checks/rabbitmqAlive.js')
 
 let status = JSON.parse(JSON.stringify(config))
 delete status.statusFile

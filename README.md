@@ -77,5 +77,6 @@ To build the binaries use the nexe-CLI or simply `npm run build`
 * Add Section Contribution
 * Config: Add Recomodations for WARN, CRIT (just text > Do this, do that)
 * Config: Add Actions (automatic resolves) for WARN CRIT (eg restart a process)
-* Add port check
-* Add rabbitmq check
+* Add port Test
+* Add rabbitmq ALIVE Test
+* Add rabbitmq messages check and Test api/exchanges/%2F/amq.topic (incoming, outgoing)
