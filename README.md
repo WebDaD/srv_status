@@ -80,3 +80,8 @@ To build the binaries use the nexe-CLI or simply `npm run build`
 * Add port Test
 * Add rabbitmq ALIVE Test
 * Add rabbitmq messages check and Test api/exchanges/%2F/amq.topic (incoming, outgoing)
+
+* Add Central Dashboard Service (collect info, display)
+* Actions should be e.g. scripts for better solutions
+* Have a script to deploy monitoring to a server (bins/actions/config)
+* Config Website (create server monitoring configuration)
