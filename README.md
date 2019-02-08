@@ -85,3 +85,5 @@ To build the binaries use the nexe-CLI or simply `npm run build`
 * Actions should be e.g. scripts for better solutions
 * Have a script to deploy monitoring to a server (bins/actions/config)
 * Config Website (create server monitoring configuration)
+
+* Add Performance Data to checks (or extra binary)
